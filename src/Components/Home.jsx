@@ -3,6 +3,7 @@ import AddFormation from "./AddFormation";
 import Formation from "./Formation";
 import HeaderPage from "./HeaderPage";
 import Layaout from "../Layaout/Layaout";
+import FormationItem from "./FormationItem";
 
 function Home({ data, addData, updatedata, deleteData }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -61,9 +62,9 @@ function Home({ data, addData, updatedata, deleteData }) {
                     />
                 )}
             </div>
-            <div className="flex justify-center w-full">
+            {/* <div className="flex justify-center w-full">
                 <div className="flex flex-wrap w-full sm:justify-center sm:gap-3 md:gap-2 lg:justify-start lg:gap-6 lg:w-11/12 pb-10">
-                    {/* Utilisation des formations filtrées */}
+                  
                     {filteredFormations.map((formation, index) => {
                         const formattedDate = new Date(formation.dateForm).toLocaleDateString();
                         return (
@@ -82,6 +83,24 @@ function Home({ data, addData, updatedata, deleteData }) {
                         );
                     })}
                 </div>
+            </div> */}
+            <div className="flex justify-center items-center w-full pb-10">
+            <div className="flex flex-col md:flex-row items-center justify-start flex-wrap w-11/12">
+                {/* Correction de la partie FormationItem */}
+                {filteredFormations ? (
+                    filteredFormations.map((formation, index) => (
+                        <FormationItem 
+                            key={index} 
+                            data={formation} 
+                            isOpenModal={() => handleChangeFormulaire(formation)}
+                            deleteData={deleteData}
+                            id={formation._id}
+                        />
+                    ))
+                ) : (
+                    <div>Aucune formation</div>
+                )}
+            </div>
             </div>
         </Layaout>
     );

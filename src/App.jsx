@@ -9,7 +9,7 @@ function App() {
 
   // Methode pour récupérer les données
   const getFormations = () => {
-    axios.get('https://gstformationbak-2-qwl2.onrender.com/api/formation')
+    axios.get('https://gstformationbak-nilw.onrender.com/api/formation')
       .then(res => {
         setMesFomations(res.data);
       })
@@ -21,7 +21,7 @@ function App() {
   // Méthode pour ajouter une formation
   const addFormation = (newFormation) => {
     axios
-      .post('https://gstformationbak-2-qwl2.onrender.com/api/formation', newFormation)
+      .post('https://gstformationbak-nilw.onrender.com/api/formation', newFormation)
       .then((res) => {
         console.log("Formation ajoutée :", res.data);
         // Rafraîchir les formations après ajout
@@ -35,7 +35,7 @@ function App() {
   // Méthode pour mettre à jour les données
   const updateFormation = async (id, updatedFormation) => {
     try {
-      const response = await axios.put(`https://gstformationbak-2-qwl2.onrender.com/api/formation/${id}`, updatedFormation);
+      const response = await axios.put(`https://gstformationbak-nilw.onrender.com/api/formation/${id}`, updatedFormation);
       getFormations();
       console.log("Formation mise à jour avec succès :", response.data);
     } catch (error) {
@@ -46,7 +46,7 @@ function App() {
   // Méthode de suppression d'une formation
   const deletFormation = async (id) => {
     try {
-      const response = await axios.delete(`https://gstformationbak-2-qwl2.onrender.com/api/formation/${id}`);
+      const response = await axios.delete(`https://gstformationbak-nilw.onrender.com/${id}`);
       console.log('Ressource supprimée avec succès:', response.data);
       getFormations();
     } catch (error) {
